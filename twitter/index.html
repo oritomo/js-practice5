@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSの勉強</title>
+  <style>
+    body{
+      height: 600px;
+      width: 100%;
+    }
+   img{
+     width: 200px;
+     height: 200px;
+   }
+   .container{
+     display: flex;
+     justify-content: space-between;
+     max-width: 800px;
+     margin: 0 auto;
+   }
+   .item{
+     display: flex;
+     flex-direction: column;
+     padding: 100px;
+   }
+   button{
+     width: 200px;
+   }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="item">
+      <h2>画像にカーソルあてると順番に変わるよ</h2>
+      <img src="./img/asa_oetsu_eduku.png" alt="" id="photo">
+      
+    </div>
+    <div  class="item">
+      <h2>画像にカーソルあてるとランダムに変わるよ</h2>
+      <img src="./img/asa_oetsu_eduku.png" alt="" id="photo2">
+    
+    </div>
+  </div>
+
+  <script>
+    const img=["./img/asa_oetsu_eduku.png","./img/kasa_golf.png","./img/oyajigari.png","./img/mukiryoku_obasan.png"]
+    const photo = document.getElementById('photo');
+    const photo2 = document.getElementById('photo2');
+
+    let num1=0;
+    let num2=0;
+    
+
+    photo.addEventListener('mouseover', () => {
+    let id = setInterval(change,1000);
+  
+    function change () {
+      if (num1 < img.length - 1) {
+        num1++;
+        photo.src = img[num1]; 
+      } else {
+        num1 = 0;
+        photo.src = img[num1] 
+      }
+    }
+
+    photo.addEventListener('mouseleave', () => {
+      clearTimeout(id);
+    });
+  });
+
+
+
+  </script>
+</body>
+</html>
